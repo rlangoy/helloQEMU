@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<emIDE_project_file>
+	<FileVersion major="1" minor="7" />
+	<Project>
+		<Option title="hello0Qemu" />
+		<Option pch_mode="2" />
+		<Option compiler="armelfgcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/hello01" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Option projectCompilerOptionsRelation="0" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-mcpu=cortex-a9" />
+					<Add option="-mfpu=vfpv3" />
+					<Add option="--specs=nosys.specs" />
+					<Add option="-ffreestanding" />
+					<Add option="-flto" />
+					<Add option="-DDEBUG=1" />
+					<Add directory="Inc" />
+				</Compiler>
+				<Linker>
+					<Add option="-flto" />
+					<Add option="-ffreestanding" />
+					<Add option="-nostdlib" />
+					<Add option="-TSetup\Flash.ld" />
+					<Add directory="obj/Debug/Setup" />
+				</Linker>
+				<ExtraCommands>
+					<Add after='cmd /c &quot;${APP_PATH}\arm\arm-none-eabi\bin\objdump&quot; -D  ${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}.elf &gt; ${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}.list' />
+					<Mode after="always" />
+				</ExtraCommands>
+				<PostOutput>
+					<ConvertedOutput PostOutputCreate="1" />
+					<ConvertedOutput PostOutputType="BIN" />
+					<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+				</PostOutput>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/hello01" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="armelfgcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-g" />
+					<Add option="-mcpu=cortex-a9" />
+					<Add option="-mfpu=vfpv3" />
+					<Add option="--specs=nosys.specs" />
+					<Add option="-ffreestanding" />
+					<Add option="-flto" />
+					<Add directory="Inc" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="-flto" />
+					<Add option="-ffreestanding" />
+					<Add option="-nostdlib" />
+					<Add option="-TSetup/Flash.ld" />
+				</Linker>
+				<PostOutput>
+					<ConvertedOutput PostOutputCreate="1" />
+					<ConvertedOutput PostOutputType="BIN" />
+					<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+				</PostOutput>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-g" />
+		</Compiler>
+		<PostOutput>
+			<ConvertedOutput PostOutputCreate="0" />
+			<ConvertedOutput PostOutputType="HEX" />
+			<ConvertedOutput PostOutputFile="${TARGET_OUTPUT_DIR}${TARGET_OUTPUT_BASENAME}" />
+		</PostOutput>
+		<Unit filename="Doc/README.txt" />
+		<Unit filename="Setup/Flash.ld" />
+		<Unit filename="Setup/startup.S" />
+		<Unit filename="Src/main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions>
+			<projectwizard TargetDevice="AT91F40816" />
+			<code_completion />
+			<debugger>
+				<remote_debugging>
+					<options conn_type="1806320574" ip_address="localhost" ip_port="2331" remote_server="J-Link GDB Server" Break_at_Main="0" Break_at_Main_Symbol="main" />
+				</remote_debugging>
+				<remote_debugging target="Debug">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="1234" target_device='&quot;Cyclone V&quot;' remote_server="Other (External tool)" Break_at_Main="1" Break_at_Main_Symbol="c_entry" additional_cmds="monitor reset&#x0A;load" />
+				</remote_debugging>
+				<remote_debugging target="Release">
+					<options conn_type="0" serial_baud="115200" ip_address="localhost" ip_port="1234" remote_server="Other (External tool)" Break_at_Main="1" Break_at_Main_Symbol="c_entry" additional_cmds="monitor reset&#x0A;load" />
+				</remote_debugging>
+			</debugger>
+			<J-Link>
+				<GDBServer TargetName="Debug">
+					<CmdOption UseGDBServer="0" />
+					<CmdOption TargetDevice='&quot;Cyclone V&quot;' />
+					<CmdOption TargetInterface="0" />
+					<CmdOption InterfaceSpeed="4000" />
+					<CmdOption TargetEndian="0" />
+					<CmdOption OverrideExe="0" Filename="C:\Program Files (x86)\SEGGER\JLink_V512\JLinkGDBServer.exe" />
+					<CmdOption StartServer="1" />
+					<CmdOption CloseServer="1" />
+					<CmdOption ServerIP="localhost" />
+					<CmdOption ServerPort="3333" />
+					<CmdOption UseAdvancedOptions="1" />
+					<CmdOption SelectJLink="" />
+					<CmdOption InitRegs="1" />
+					<CmdOption LocalhostOnly="1" />
+					<CmdOption Log="0" Filename="" />
+					<CmdOption Silent="0" />
+					<CmdOption StayOnTop="1" />
+					<CmdOption VerifyDownload="0" />
+					<CmdOption NoTargetTimeout="0" />
+					<CmdOption JTAGConf="0" IRPre="0" DRPre="0" />
+					<CmdOption JLinkScript="0" Filename="" />
+					<CmdOption JLinkSettings="0" Filename="" />
+					<CmdOption GDBInit="0" Filename="" />
+					<CmdOption AdditionalOptions="" />
+				</GDBServer>
+				<GDBServer TargetName="Release">
+					<CmdOption UseGDBServer="0" />
+					<CmdOption TargetDevice="AT91F40816" />
+					<CmdOption TargetInterface="0" />
+					<CmdOption InterfaceSpeed="4000" />
+					<CmdOption TargetEndian="0" />
+					<CmdOption OverrideExe="0" Filename="C:\Program Files (x86)\SEGGER\JLink_V512\JLinkGDBServer.exe" />
+					<CmdOption StartServer="1" />
+					<CmdOption CloseServer="1" />
+					<CmdOption ServerIP="localhost" />
+					<CmdOption ServerPort="2331" />
+					<CmdOption UseAdvancedOptions="0" />
+					<CmdOption SelectJLink="" />
+					<CmdOption InitRegs="1" />
+					<CmdOption LocalhostOnly="1" />
+					<CmdOption Log="0" Filename="" />
+					<CmdOption Silent="0" />
+					<CmdOption StayOnTop="0" />
+					<CmdOption VerifyDownload="0" />
+					<CmdOption NoTargetTimeout="0" />
+					<CmdOption JTAGConf="0" IRPre="0" DRPre="0" />
+					<CmdOption JLinkScript="0" Filename="" />
+					<CmdOption JLinkSettings="0" Filename="" />
+					<CmdOption GDBInit="0" Filename="" />
+					<CmdOption AdditionalOptions="" />
+				</GDBServer>
+			</J-Link>
+		</Extensions>
+	</Project>
+</emIDE_project_file>
